@@ -7,9 +7,10 @@ import java.awt.event.*;
 
 public class GUISandboxMain implements ActionListener{
     static JFrame mainFrame;
-    static JPanel mainPanel;
+    static SandboxPanel mainPanel;
     static JTextField textField1;
     static JButton button1;
+    static JTextField textField2;
 
     public GUISandboxMain() {
         mainFrame = new JFrame();
@@ -18,7 +19,7 @@ public class GUISandboxMain implements ActionListener{
 
         mainFrame.setVisible(true);
 
-        mainPanel = new JPanel();
+        mainPanel = new SandboxPanel();
         mainFrame.setContentPane(mainPanel);
 
         mainPanel.setBackground(Color.PINK);
@@ -29,16 +30,22 @@ public class GUISandboxMain implements ActionListener{
         textField1.setFont(font1);
         mainPanel.add(textField1);
 
+        textField2 = new JTextField(20);
+        textField2.setEditable(false);
+        mainPanel.add(textField2);
+
         button1 = new JButton("Go!");
         mainPanel.add(button1);
         button1.addActionListener(this);
 
+        // mainFrame.invalidate();
         mainFrame.pack();
     }
 
     public void actionPerformed (ActionEvent e) {
         if (e.getSource() == button1) {
             System.out.println(textField1.getText());
+            textField2.setText(textField1.getText());
         }
     }
 
