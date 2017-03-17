@@ -38,14 +38,15 @@ public class GUISandboxMain implements ActionListener{
         mainPanel.add(button1);
         button1.addActionListener(this);
 
-        // mainFrame.invalidate();
-        mainFrame.pack();
+        mainFrame.setVisible(true);
     }
 
     public void actionPerformed (ActionEvent e) {
         if (e.getSource() == button1) {
             System.out.println(textField1.getText());
             textField2.setText(textField1.getText());
+
+            while(true){mainPanel.drawRandomCircle();}
         }
     }
 
